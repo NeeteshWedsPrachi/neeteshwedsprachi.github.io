@@ -366,36 +366,41 @@
 	<script src="js/main.js"></script>
 
 	<script>
-    var d = new Date('25-Nov-2020');
+	   $( document ).ready(function() {
+	    	var d = new Date();
+		d.setDate(25);
+		d.setMonth(10);
+		d.setFullYear(2020);
 
-    // default example
-    simplyCountdown('.simply-countdown-one', {
-        year: d.getFullYear(),
-        month: d.getMonth() + 1,
-        day: d.getDate()
-    });
-
-    //jQuery example
-    $('#simply-countdown-losange').simplyCountdown({
-        year: d.getFullYear(),
-        month: d.getMonth() + 1,
-        day: d.getDate(),
-        enableUtc: false
-    });
-	$('#submit').click(e => {
-		$('#submit').attr('disabled', 'disabled');
-		const name = $('#name').val();
-		const emailAddress = $('#email').val();
-		const query = '?entry.1004474288=' + name + '&emailAddress=' + emailAddress;
-		fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLSc_LkI7PWebaLx65Jif5FOj3p16gu6V_0c9Q6VqLKBdyzHMHQ/formResponse' + query)
-		.then(res => {
-			$('#confirmation').show();
-		})
-		.catch(err => {
-			$('#confirmation').show();
+		// default example
+		simplyCountdown('.simply-countdown-one', {
+			year: d.getFullYear(),
+			month: d.getMonth() + 1,
+			day: d.getDate()
 		});
-	});
-</script>
+
+		//jQuery example
+		$('#simply-countdown-losange').simplyCountdown({
+			year: d.getFullYear(),
+			month: d.getMonth() + 1,
+			day: d.getDate(),
+			enableUtc: false
+		});
+		$('#submit').click(e => {
+			$('#submit').attr('disabled', 'disabled');
+			const name = $('#name').val();
+			const emailAddress = $('#email').val();
+			const query = '?entry.1004474288=' + name + '&emailAddress=' + emailAddress;
+			fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLSc_LkI7PWebaLx65Jif5FOj3p16gu6V_0c9Q6VqLKBdyzHMHQ/formResponse' + query)
+			.then(res => {
+				$('#confirmation').show();
+			})
+			.catch(err => {
+				$('#confirmation').show();
+			});
+		});
+	   });
+	</script>
 
 	</body>
 </html>
